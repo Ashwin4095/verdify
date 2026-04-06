@@ -207,7 +207,7 @@ const EventScoreCard = () => {
   }, []);
 
   return (
-    <div className="bg-[#F2F0E9] rounded-[2rem] border border-[#1A1A1A]/10 p-8 shadow-sm h-[400px] md:h-[500px] flex flex-col group hover:shadow-xl transition-shadow duration-500 overflow-hidden font-sans">
+    <div className="bg-[#F2F0E9] rounded-[2rem] border border-[#1A1A1A]/10 p-8 shadow-sm h-[500px] flex flex-col group hover:shadow-xl transition-shadow duration-500 overflow-hidden font-sans">
       <div className="flex justify-between items-start mb-12">
         <div>
           <h3 className="text-xl font-black text-[#2E4036] uppercase tracking-tight">Event Score</h3>
@@ -223,7 +223,7 @@ const EventScoreCard = () => {
           <div
             key={card.id}
             className={cn(
-              "absolute w-full max-w-[192px] md:max-w-[240px] aspect-[4/5] rounded-3xl p-6 transition-all duration-700 ease-spring border border-white/20 shadow-2xl",
+              "absolute w-full max-w-[240px] aspect-[4/5] rounded-3xl p-6 transition-all duration-700 ease-spring border border-white/20 shadow-2xl",
               card.color,
               i === 0 ? "scale-100 opacity-100 z-30 translate-y-0" :
                 i === 1 ? "scale-90 opacity-60 z-20 translate-y-8 blur-[2px]" :
@@ -546,7 +546,7 @@ const Workflow = () => {
 const WorkflowCard = ({ step, title, desc, icon, animation }) => {
   return (
     <div className="Workflow-card h-screen w-full flex items-center justify-center sticky top-0 bg-[#1A1A1A] font-sans">
-      <div className="max-w-7xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center pt-20 md:pt-0">
+      <div className="max-w-7xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
         <div className="space-y-8">
           <span className="text-sm font-mono text-clay font-black tracking-[0.5em]"> STEP {step}</span>
           <div className="space-y-4">
