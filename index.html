@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verdify | Sustainability Intelligence for Corporate Events</title>
+    <meta name="description"
+        content="Verdify provides real-time sustainability intelligence and verifiable ESG-aligned reports for corporate events." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,700&family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700;800&family=Instrument+Serif:ital@1&family=Sora:wght@700;800&family=Playfair+Display:ital@1&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Prevent FOUC */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Noise SVG Filter defined in HTML to be used via CSS -->
+    <svg id="noiseLayer" xmlns="http://www.w3.org/2000/svg">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        </filter>
+    </svg>
+    <div class="noise-overlay" style="filter: url(#noiseFilter);"></div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+        window.onload = () => document.body.classList.add('loaded');
+    </script>
+</body>
+
+</html>

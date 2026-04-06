@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --moss: #2E4036;
+  --clay: #CC5833;
+  --cream: #F2F0E9;
+  --charcoal: #1A1A1A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-cream text-charcoal selection:bg-clay selection:text-cream;
+  }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+}
+
+@layer components {
+
+  /* Noise Overlay */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.05;
+  }
+
+  /* Containers */
+  .pill-container {
+    @apply rounded-5xl border border-charcoal/10 bg-cream/60 backdrop-blur-xl;
+  }
+
+  /* Magnetic Buttons */
+  .btn-magnetic {
+    @apply relative overflow-hidden rounded-full px-8 py-3 font-semibold transition-magnetic duration-300;
+  }
+
+  .btn-magnetic:hover {
+    @apply scale-[1.03];
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply border border-charcoal/10 bg-cream/40 backdrop-blur-xl dark:border-white/10 dark:bg-charcoal/40;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .mask-radial {
+    mask-image: radial-gradient(circle, black, transparent);
+  }
+
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 2000;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-dash {
+  animation: dash 3s linear infinite;
+}
+
+@keyframes scan {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(160px);
+    opacity: 0;
+  }
+}
+
+.animate-scan {
+  animation: scan 4s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Noise SVG Filter */
+#noiseLayer {
+  display: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-moss/20 rounded-full hover:bg-moss/40 transition-colors;
+}
