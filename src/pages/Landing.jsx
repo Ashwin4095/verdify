@@ -69,7 +69,7 @@ const Navbar = () => {
         </div>
 
         <Link to="/contact">
-          <button className="hidden sm:flex items-center gap-2 bg-[#2E4036] text-[#F2F0E9] px-5 py-2 rounded-full text-sm font-bold hover:scale-[1.03] transition-all duration-300 ease-magnetic active:scale-95 group overflow-hidden relative">
+          <button className="flex items-center gap-2 bg-[#2E4036] text-[#F2F0E9] px-5 py-2 rounded-full text-sm font-bold hover:scale-[1.03] transition-all duration-300 ease-magnetic active:scale-95 group overflow-hidden relative">
             <span className="relative z-10">Book a consultation</span>
             <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
             <div className="absolute inset-0 bg-clay translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
