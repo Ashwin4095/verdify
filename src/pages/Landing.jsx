@@ -223,7 +223,7 @@ const EventScoreCard = () => {
           <div
             key={card.id}
             className={cn(
-              "absolute w-full max-w-[240px] aspect-[4/5] rounded-3xl p-6 transition-all duration-700 ease-spring border border-white/20 shadow-2xl",
+              "absolute w-full max-w-[160px] md:max-w-[240px] aspect-[4/5] rounded-3xl p-4 md:p-6 transition-all duration-700 ease-spring border border-white/20 shadow-2xl",
               card.color,
               i === 0 ? "scale-100 opacity-100 z-30 translate-y-0" :
                 i === 1 ? "scale-90 opacity-60 z-20 translate-y-8 blur-[2px]" :
@@ -545,7 +545,7 @@ const Workflow = () => {
 
 const WorkflowCard = ({ step, title, desc, icon, animation }) => {
   return (
-    <div className="Workflow-card h-screen w-full flex items-center justify-center sticky top-0 bg-[#1A1A1A] font-sans">
+    <div className="Workflow-card h-screen w-full flex items-start md:items-center justify-center sticky top-0 bg-[#1A1A1A] font-sans pt-24 md:pt-0">
       <div className="max-w-7xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
         <div className="space-y-8">
           <span className="text-sm font-mono text-clay font-black tracking-[0.5em]"> STEP {step}</span>
