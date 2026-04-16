@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Pre-render the index page for massive SSG speed (SEO)
+export const prerender = true;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SEO-Core",
+  "url": "https://seo-core.vercel.app",
+  "description": "A high performance indexing matrix.",
+};
+---
+
+<Layout 
+  title="SEO-Core | High Performance Indexing" 
+  description="Precision architecture for AEO, GEO, and high performance crawling engines."
+  schema={organizationSchema}
+>
+  <main class="relative bg-primary min-h-screen">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-8 left-1/2 -translate-x-1/2 z-50 px-8 py-4 rounded-full backdrop-blur-xl border border-white/5 transition-all duration-300">
+      <div class="flex items-center gap-12">
+        <span class="text-white font-bold tracking-tight">SEO-CORE</span>
+        <div class="hidden md:flex gap-8 text-sm text-gray-300">
+          <a href="#features" class="hover:text-accent hover:-translate-y-[1px] transition-transform">Architecture</a>
+          <a href="#protocol" class="hover:text-accent hover:-translate-y-[1px] transition-transform">Protocol</a>
+        </div>
+        <button class="magnetic-btn bg-accent text-primary px-6 py-2 rounded-full font-medium text-sm">
+          <span class="relative z-10">Initialize Crawl</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[100dvh] flex items-end pb-32 pl-12 md:pl-32 overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" 
+          alt="Dark architectural background representing indexing matrix" 
+          class="w-full h-full object-cover"
+        />
+        <!-- Heavy primary-to-black gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
+      </div>
+      
+      <!-- Content -->
+      <div class="relative z-10 max-w-4xl pt-[20dvh]">
+        <h1 class="flex flex-col gap-2">
+          <span class="hero-line block text-3xl md:text-5xl font-heading font-bold tracking-tight text-white">
+            Architecture meets
+          </span>
+          <span class="hero-line block text-6xl md:text-9xl font-drama italic text-accent leading-none">
+            Precision.
+          </span>
+        </h1>
+        <p class="hero-line mt-8 text-xl text-gray-300 max-w-lg font-heading">
+          A high performance indexing matrix built for generative engine optimization and zero-latency retrieval.
+        </p>
+        <div class="hero-line mt-12">
+          <button class="magnetic-btn bg-white text-primary px-8 py-4 rounded-full font-bold text-lg inline-flex flex-col items-center justify-center relative overflow-hidden group">
+             <span class="relative z-10">Deploy Infrastructure</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Use let inside Astro script to scope appropriately across views if ViewTransitions were used
+  const ctx = gsap.context(() => {
+    // Navbar scroll effect
+    ScrollTrigger.create({
+      start: "top -100",
+      onUpdate: (self) => {
+        const nav = document.getElementById("navbar");
+        if (nav) {
+          if (self.direction === 1) {
+             nav.classList.add("bg-primary/60", "border-white/10");
+             nav.classList.remove("border-white/5");
+          } else if (self.progress === 0) {
+             nav.classList.remove("bg-primary/60", "border-white/10");
+             nav.classList.add("border-white/5");
+          }
+        }
+      }
+    });
+
+    // Hero Animation Setup
+    gsap.from(".hero-line", {
+      y: 40,
+      opacity: 0,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: "power3.out",
+      delay: 0.2
+    });
+  });
+
+  // Since Astro runs this once, ctx doesn't necessarily need cleanup unless using ViewTransitions
+</script>

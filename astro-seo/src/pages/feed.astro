@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Disable prerendering to enable SSR.
+export const prerender = false;
+// For Vercel ISR, we would set caching headers here instead of relying on `prerender` natively, 
+// using Netlify builder or Vercel edge/ISR config:
+Astro.response.headers.set('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
+
+// Mock external data fetch for SSR demonstration
+const fetchServerTime = () => new Promise(resolve => setTimeout(() => resolve(new Date().toISOString()), 500));
+const serverTime = await fetchServerTime();
+
+const aeoSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How does Server-Side Rendering improve SEO?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "SSR guarantees that Answer Engines and web crawlers receive a fully populated HTML document immediately on request, bypassing JS execution delays."
+    }
+  }]
+};
+---
+
+<Layout 
+  title="Real-time Feed | SEO-Core" 
+  description="Dynamically rendered server telemetry feed demonstrating SSR."
+  schema={aeoSchema}
+>
+  <main class="bg-primary min-h-screen text-white pt-48 px-12 md:px-32">
+    <div class="max-w-4xl border border-white/10 rounded-[2rem] p-12 bg-white/5 backdrop-blur-md">
+      <div class="flex items-center justify-between mb-8">
+        <h1 class="font-heading text-3xl font-bold">Telemetry Typewriter <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm ml-4 border border-accent/50 animate-pulse">Live SSR</span></h1>
+        <div class="font-data text-accent text-sm">
+          {serverTime}
+        </div>
+      </div>
+      
+      <div class="font-data text-gray-400 space-y-4">
+        <p class="text-white hover:text-accent transition-colors duration-300">> [SYSTEM] Request intercepted via Edge node.</p>
+        <p class="text-white hover:text-accent transition-colors duration-300">> [GEO] Generative entities hydrated successfully.</p>
+        <p class="text-white hover:text-accent transition-colors duration-300">> [AEO] JSON-LD valid. Bot engagement likely.</p>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Inter", sans-serif;
+  --font-drama: "Playfair Display", serif;
+  --font-data: "JetBrains Mono", monospace;
+  
+  --color-primary: #0D0D12;
+  --color-accent: #C9A84C;
+  --color-background: #FAF8F5;
+  --color-dark: #2A2A35;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    overflow-x: hidden;
+  }
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+}
+
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+.magnetic-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--color-background);
+  opacity: 0.1;
+  transition: left 0.3s ease;
+}
+
+.magnetic-btn:hover::before {
+  left: 0;
+}
