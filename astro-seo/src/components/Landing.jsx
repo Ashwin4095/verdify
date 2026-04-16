@@ -113,7 +113,7 @@ const Hero = () => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroBg}
+          src={typeof heroBg === 'object' ? heroBg.src : heroBg}
           alt="Dark Misty Mountains"
           className="hero-bg w-full h-full object-cover"
         />
